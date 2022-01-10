@@ -6,7 +6,7 @@ Filebeat role
 Requirements
 ------------
 
-Поддерживаются только ОС семейств debian и EL.
+Поддерживается только CentOS 7
 
 Role Variables
 --------------
