@@ -1,8 +1,5 @@
 ---
 # handlers file for filebeat-role
   - name: restart Filebeat
-    become: true
-    systemd:
-      name: filebeat
-      state: restarted
-      enabled: true
+    shell: yum install -y initscripts
+    shell: "sh /etc/init.d/filebeat restart"
