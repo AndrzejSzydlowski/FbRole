@@ -5,6 +5,9 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: Example assertion
+  - name: Check that the filebeat.log exists
     assert:
-      that: true
+      that:
+        stat:
+          path: /var/log/filebeat/filebeat
+        register: stat_result

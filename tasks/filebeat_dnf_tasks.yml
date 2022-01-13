@@ -1,0 +1,17 @@
+    - name: Download Filebeat rpm
+      get_url:
+        url: "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ elk_stack_version }}-x86_64.rpm"
+        dest: "/tmp/filebeat-{{ elk_stack_version }}-x86_64.rpm"
+      register: download_filebeat
+      until: download_filebeat is succeeded
+    - name: Install Filebeat
+      become: true
+      dnf:
+        disable_gpg_check: True
+        name: "/tmp/filebeat-{{ elk_stack_version }}-x86_64.rpm"
+        state: present
+    - name: Install Initscripts
+      become: true
+      dnf:
+        name: initscripts
+        state: present
